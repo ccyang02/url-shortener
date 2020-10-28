@@ -12,7 +12,7 @@ const urlSchema = new Schema({
   },
   createdTime: {
     type: Date,
-    expires: 10,
+    expires: 3600,
     default: Date.now()
   }
 })

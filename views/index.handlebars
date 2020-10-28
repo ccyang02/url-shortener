@@ -13,16 +13,20 @@
       <div class="col-10 justify-content-center info-row">
         <div class="row align-items-center">
           <div class="col-5 info-text">{{originUrl}}</div>
-          <div class="col-5"><a href="{{originUrl}}" class="short-url">{{shortUrl}}</a></div>
+          <div class="col-5">
+            <a href="{{originUrl}}" class="short-url">{{shortUrl}}</a>
+            <input type="hidden" class="hidden-input" value="{{shortUrl}}" />
+          </div>
           <div class="col-1">
-            <button type="button" class="btn btn-link copy">Copy</button>
+            <button type="button" class="btn btn-link copy" onclick="clickEvent()">Copy</button>
           </div>
         </div>
       </div>
       {{else}}
       <div class="col-8">
-        <form action="/shortcut" method="post" style="text-align: center;">
-          <input type="text" name="inputUrl" placeholder="Input URL here" class="form-control" style="height: 45px;">
+        <form action="/shortcut" method="post" onsubmit="return validateForm()" style="text-align: center;">
+          <input type="text" name="inputUrl" placeholder="Input URL here" class="form-control input-url"
+            style="height: 45px;">
           <button type="submit" class="btn btn-lg btn-outline-primary mt-3">Shorten</button>
         </form>
       </div>
