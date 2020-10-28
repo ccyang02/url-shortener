@@ -9,11 +9,12 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 router.post('/', (req, res) => {
   const originUrl = req.body.inputUrl
-  const shortUrl = tools.encode(Date.now(), originUrl)
-  console.log(`${req.originalUrl}/${shortUrl}`)
+  const shortToken = tools.encode(Date.now(), originUrl)
+  const shortUrl = `https://${req.get('host').split(':')[0]}/${shortToken}`
+  console.log(shortUrl)
 
   Urls.create({ originUrl, shortUrl })
-    .then(() => res.send('shortcut'))
+    .then(() => res.render('index', { originUrl, shortUrl }))
     .catch(error => console.log(error))
 })
 

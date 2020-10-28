@@ -13,3 +13,13 @@
 .btn:hover {
   background-color: rgb(34, 129, 194);
 }
+
+.short-url, .info-text, .copy {
+  font-size: 1.3em;
+}
+
+
+.info-row{
+   background-color: white; 
+   border:darkgrey"
+}
