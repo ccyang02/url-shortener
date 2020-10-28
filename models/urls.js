@@ -2,14 +2,19 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const urlSchema = new Schema({
-  origin: {
+  originUrl: {
     type: String,
     required: true
   },
-  shortener: {
+  shortUrl: {
     type: String,
     required: true
   },
+  createdTime: {
+    type: Date,
+    expires: 10,
+    default: Date.now()
+  }
 })
 
 module.exports = mongoose.model('Url', urlSchema)

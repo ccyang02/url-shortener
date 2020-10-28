@@ -8,10 +8,13 @@ const Urls = require('../../models/urls')
 router.use(bodyParser.urlencoded({ extended: true }))
 
 router.post('/', (req, res) => {
-  console.log(req.body.inputUrl)
-  console.log(tools.encode(Date.now(), req.body.inputUrl))
+  const originUrl = req.body.inputUrl
+  const shortUrl = tools.encode(Date.now(), originUrl)
+  console.log(`${req.originalUrl}/${shortUrl}`)
 
-  res.send('shortcut')
+  Urls.create({ originUrl, shortUrl })
+    .then(() => res.send('shortcut'))
+    .catch(error => console.log(error))
 })
 
 router.get('/:sid', (req, res) => {
