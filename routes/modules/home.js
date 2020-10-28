@@ -7,6 +7,7 @@ const Urls = require('../../models/urls')
 router.use(bodyParser.urlencoded({ extended: true }))
 
 router.get('/', (req, res) => {
+  console.log(Date.now())
   res.redirect('/index')
 })
 
