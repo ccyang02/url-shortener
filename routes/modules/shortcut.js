@@ -7,7 +7,8 @@ const Urls = require('../../models/urls')
 router.use(bodyParser.urlencoded({ extended: true }))
 
 router.post('/', (req, res) => {
-  res.send()
+  console.log(req.body.inputUrl)
+  res.send('shortcut')
 })
 
 router.get('/:sid', (req, res) => {

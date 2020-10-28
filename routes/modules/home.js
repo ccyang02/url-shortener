@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 router.get('/index', (req, res) => {
   // main function for url shortener
-  res.send('Hi')
+  res.render('index')
 })
 
 module.exports = router
