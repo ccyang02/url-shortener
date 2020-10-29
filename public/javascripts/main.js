@@ -1,4 +1,5 @@
 function validateForm() {
+  // for preventing form submitted when empty input
   const input = document.querySelector('.input-url')
   if (input.value) return true
   else {
@@ -14,3 +15,12 @@ function clickEvent() {
   document.execCommand("copy")
   shortUrl.setAttribute('type', 'hidden')
 }
+
+$(function () {
+  $('.copy').popover({ delay: { "hide": 500 } })
+  $('.copy').popover().click(function () {
+    setTimeout(function () {
+      $('.copy').popover('hide')
+    }, 2000)
+  })
+})

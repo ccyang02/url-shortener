@@ -7,7 +7,6 @@ const Urls = require('../../models/urls')
 router.use(bodyParser.urlencoded({ extended: true }))
 
 router.get('/', (req, res) => {
-  console.log(Date.now())
   res.redirect('/index')
 })
 
@@ -18,7 +17,6 @@ router.get('/index', (req, res) => {
 
 router.get('/:sid', (req, res) => {
   // redirect to original website
-  // localhost:3000/BaHp1
   const sid = req.params.sid
   Urls.find({ shortUrl: sid })
     .lean()

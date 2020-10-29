@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.title {
+.page-title {
   color: antiquewhite;
   font-size: 3.5em;
   font-weight: bolder;
@@ -18,8 +18,13 @@
   font-size: 1.3em;
 }
 
-
 .info-row{
    background-color: white; 
    border:darkgrey"
+}
+
+.page-title:link, .page-title:visited {
+  color: antiquewhite;
+  text-decoration: none;
+  cursor: pointer;
 }
