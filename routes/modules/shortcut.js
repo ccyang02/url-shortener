@@ -9,17 +9,17 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 router.post('/', (req, res) => {
   const originUrl = req.body.inputUrl
+  const showOriginUrl = (originUrl.length > 30) ? originUrl.substring(0, 30) + '...' : originUrl
   let shortToken = tools.encode(Date.now(), originUrl)
-  let shortUrl = `${req.get('host')}/${shortToken}`
+  let shortUrl = `http://${req.get('host')}/${shortToken}`
 
   // also use database to check if duplicated shortUrl exist
   Urls.find({ shortUrl: shortToken })
     .lean()
     .then(output => {
-      console.log(output)
       if (output.length === 0) {
         Urls.create({ originUrl, shortUrl: shortToken })
-          .then(() => res.render('index', { originUrl, shortUrl }))
+          .then(() => res.render('index', { originUrl, showOriginUrl, shortUrl }))
           .catch(error => console.log(error))
       } else {
         res.render('index', { originUrl, shortUrl: 'Fail, please try again.' })

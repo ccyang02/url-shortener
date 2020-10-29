@@ -21,7 +21,6 @@ router.get('/:sid', (req, res) => {
   Urls.find({ shortUrl: sid })
     .lean()
     .then(output => {
-      console.log(output)
       res.redirect(output[0].originUrl)
     })
     .catch(error => {
