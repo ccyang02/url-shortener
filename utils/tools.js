@@ -1,5 +1,3 @@
-const { init } = require("../models/urls")
-
 const codeList = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQUSTUVWXYZ"
 const baseMod = 14776336 // 62^4
 const baseHierarchy = [238328, 3844, 62]
@@ -8,7 +6,7 @@ const tools = {
   encode: function (timestamp, originUrl) {
     let buffer = timestamp % baseMod
     const codes = []
-    for (divisor of baseHierarchy) {
+    for (let divisor of baseHierarchy) {
       codes.push(parseInt(buffer / divisor))
       buffer = buffer % divisor
     }

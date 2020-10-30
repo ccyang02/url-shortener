@@ -9,7 +9,6 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 router.post('/', (req, res) => {
   const originUrl = req.body.inputUrl
-  const showOriginUrl = (originUrl.length > 30) ? originUrl.substring(0, 30) + '...' : originUrl
   let shortToken = tools.encode(Date.now(), originUrl)
   let shortUrl = `http://${req.get('host')}/${shortToken}`
 
@@ -19,7 +18,7 @@ router.post('/', (req, res) => {
     .then(output => {
       if (output.length === 0) {
         Urls.create({ originUrl, shortUrl: shortToken })
-          .then(() => res.render('index', { originUrl, showOriginUrl, shortUrl }))
+          .then(() => res.render('index', { originUrl, shortUrl }))
           .catch(error => console.log(error))
       } else {
         res.render('index', { originUrl, shortUrl: 'Fail, please try again.' })
